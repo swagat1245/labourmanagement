@@ -4,19 +4,19 @@ import com.labour.dao.UserRepository;
 import com.labour.entities.User;
 import com.labour.helper.Message;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 public class HomeController {
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
     @Autowired
     private UserRepository userRepository;
     @RequestMapping("/")
@@ -48,9 +48,9 @@ public class HomeController {
             model.addAttribute("user",user);
             return "signup";
         }
-
+        user.setRole("ROLE_USER");
         user.setEnabled(true);
-        user.setRole("Role_USER");
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         System.out.println("agreement" + agreement);
         System.out.println("user" + user);
 
@@ -66,6 +66,11 @@ public class HomeController {
             session.setAttribute("message",new Message("Something went wrong !!"+e.getMessage(),"alert-danger"));
             return "signup";
         }
+    }
+    @GetMapping("/signin")
+    public String customLogin(Model model){
+        model.addAttribute("title","Login Page");
+        return "login";
     }
 
 }
