@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+</head>
+
+<body>
+  <section>
+    <div class="card mr-3 ml-3">
+
+      <div class="card-body">
+        <h1 class="text-center">
+          Add Labour
+        </h1>
+        <div class="container-fluid mt-1">
+
+          <div class="row">
+
+            <div class="col-md-10 offset-md-1">
+              <form action="#" th:object="${labour}" enctype="multipart/form-data" method="POST"
+                th:action="@{/user/process-labour}" class="mt-2">
+
+
+                <!-- name -->
+                <div class="input-group">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-plus"></i>
+                    </div>
+                  </div>
+                  <input type="text" id="firstName" name="name" placeholder="Enter name here" class="form-control">
+                </div>
+                <!-- aadhar no  -->
+                <div class="input-group mt-3">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-user-alt"></i>
+                    </div>
+                  </div>
+                  <input type="text" id="aadharCardNo" name="aadharCardNo" placeholder="aadhar CardNo number"
+                    class="form-control">
+                </div>
+                <!-- phone field -->
+                <div class="input-group mt-3">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-phone"></i>
+                    </div>
+                  </div>
+                  <input type="number" id="phone" name="mobileNo" placeholder="Enter mobileNo number"
+                    class="form-control">
+                </div>
+                <!--  work -->
+                <div class="input-group mt-3">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa fa-briefcase"></i>
+                    </div>
+                  </div>
+                  <input type="work" id="work" name="work" placeholder="Enter work here" class="form-control">
+                </div>
+                <!-- address -->
+                <div class="input-group mt-3">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa-solid fa-id-badge"></i>
+                    </div>
+                  </div>
+                  <input type="address" id="address" name="address" placeholder="Enter address here"
+                    class="form-control">
+                </div>
+                <!-- Experience -->
+                <div class="input-group mt-3">
+
+
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fa-solid fa-person-digging"></i>
+                    </div>
+                  </div>
+                  <input type="number" id="number" name="Experience" placeholder="Enter Experience here"
+                    class="form-control">
+                </div>
+                <div class="container mt-3">
+                  <button class="btn btn-outline-primary">save labour</button>
+                </div>
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

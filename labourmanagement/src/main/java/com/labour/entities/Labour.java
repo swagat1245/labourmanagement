@@ -1,18 +1,22 @@
 package com.labour.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "LABOUR")
 public class Labour {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator ="system-uuid")
+    @GenericGenerator(name = "system-uuid",strategy = "uuid")
     private String aadharCardNo;
     private String name;
     @Column(unique = true)
     private String mobileNo;
     private String address;
     private String work;
+//    private String image;
     private int Experience ;
     @ManyToOne
     private User user;
@@ -72,4 +76,17 @@ public class Labour {
     public void setUser(User user) {
         this.user = user;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Labour{" +
+//                "aadharCardNo='" + aadharCardNo + '\'' +
+//                ", name='" + name + '\'' +
+//                ", mobileNo='" + mobileNo + '\'' +
+//                ", address='" + address + '\'' +
+//                ", work='" + work + '\'' +
+//                ", Experience=" + Experience +
+//                ", user=" + user +
+//                '}';
+//    }
 }
